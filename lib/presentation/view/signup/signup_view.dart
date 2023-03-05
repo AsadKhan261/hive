@@ -31,7 +31,7 @@ class _SignUpViewState extends State<SignUpView> {
                 height: 30,
               ),
               Center(child: Image.asset('assets/images/logo.png')),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               CustomText(
@@ -40,7 +40,7 @@ class _SignUpViewState extends State<SignUpView> {
                 fontWeight: FontWeight.w700,
                 color: Colors.white,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               CustomText(
@@ -51,19 +51,19 @@ class _SignUpViewState extends State<SignUpView> {
                 name: 'Name',
                 controller: nameController,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               CustomTextField(name: 'Email'),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               CustomTextField(name: 'Password'),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               CustomTextField(name: 'Confirm Password'),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               AppButtton(

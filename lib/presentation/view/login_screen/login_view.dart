@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/presentation/elements/app_button.dart';
 import 'package:hive/presentation/elements/custom_text.dart';
 import 'package:hive/presentation/elements/custom_text_field.dart';
+import 'package:hive/presentation/view/home/home_view.dart';
 import 'package:hive/presentation/view/signup/signup_view.dart';
 
 class LoginView extends StatefulWidget {
@@ -78,7 +79,9 @@ class _LoginViewState extends State<LoginView> {
                   width: MediaQuery.of(context).size.width,
                   text: 'Login',
                   color: Colors.black,
-                  onPress: () {},
+                  onPress: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeView()));
+                  },
                   textColor: Colors.white)
             ],
           ),
