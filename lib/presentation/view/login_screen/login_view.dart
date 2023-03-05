@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/presentation/elements/app_button.dart';
 import 'package:hive/presentation/elements/custom_text.dart';
 import 'package:hive/presentation/elements/custom_text_field.dart';
+import 'package:hive/presentation/view/signup/signup_view.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -25,11 +26,16 @@ class _LoginViewState extends State<LoginView> {
         backgroundColor: Colors.transparent,
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.all(12.0),
-          child: Row(mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CustomText(text: 'Dont have an account? ',color: Colors.white,),
-              CustomText(text: 'Sign up',color: Colors.white,fontWeight: FontWeight.bold,),
-            ],
+          child: InkWell(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUpView()));
+            },
+            child: Row(mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CustomText(text: 'Dont have an account? ',color: Colors.white,),
+                CustomText(text: 'Sign up',color: Colors.white,fontWeight: FontWeight.bold,),
+              ],
+            ),
           ),
         ),
         body: Padding(
