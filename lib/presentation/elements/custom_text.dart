@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomText extends StatelessWidget {
 String text;
@@ -11,11 +12,11 @@ CustomText({required this.text,this.color,this.fontSize = 14,this.fontWeight});
 @override
   Widget build(BuildContext context) {
     return Text(text,
-    style: TextStyle(
-      color: color,
+    style: GoogleFonts.poppins(
       fontSize: fontSize,
       fontWeight: fontWeight,
-    ),
+      color: color
+    )
     );
   }
 }

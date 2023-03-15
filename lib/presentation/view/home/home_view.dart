@@ -3,6 +3,7 @@ import 'package:hive/configs/front_end_configs.dart';
 import 'package:hive/models/page_view_model.dart';
 import 'package:hive/presentation/elements/app_button.dart';
 import 'package:hive/presentation/elements/custom_text.dart';
+import 'package:hive/presentation/view/Image_detail.dart';
 import 'package:hive/presentation/view/home/widgets/home_card.dart';
 
 class HomeView extends StatefulWidget {
@@ -40,131 +41,143 @@ class _HomeViewState extends State<HomeView> {
           body: SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(18.0),
-              child: Column(
-                children: [
-                  CustomText(
-                    text: 'Welcome To ',
-                    color: Colors.white,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  CustomText(
-                    text: 'Hive Vault',
-                    fontWeight: FontWeight.w800,
-                    fontSize: 16,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    height: 200,
-                    child: PageView.builder(
-                        itemCount: myList.length,
-                        scrollDirection: Axis.horizontal,
-                        pageSnapping: true,
-                        itemBuilder: (context, i) {
-                          return GestureDetector(
-                            onTap: () {
-                              print(myList[i].color);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                height: 200,
-                                decoration: BoxDecoration(
-                                  color: myList[i].color,
-                                  borderRadius: BorderRadius.circular(12),
-                                  // image: DecorationImage(
-                                  //   image: AssetImage(myList[i].image.toString()),fit: BoxFit.cover
-                                  // )
-                                ),
-                                width: MediaQuery.of(context).size.width,
-                                child: ClipRRect(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    CustomText(
+                      text: 'Welcome To ',
+                      color: Colors.white,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    CustomText(
+                      text: 'Hive Vault',
+                      fontWeight: FontWeight.w800,
+                      fontSize: 16,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      height: 200,
+                      child: PageView.builder(
+                          itemCount: myList.length,
+                          scrollDirection: Axis.horizontal,
+                          pageSnapping: true,
+                          itemBuilder: (context, i) {
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            ImageDetail(myList[i].image)));
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  height: 200,
+                                  decoration: BoxDecoration(
+                                    color: myList[i].color,
                                     borderRadius: BorderRadius.circular(12),
-                                    child: Image.asset(
-                                      myList[i].image.toString(),
-                                      fit: BoxFit.cover,
-                                    )),
+                                    // image: DecorationImage(
+                                    //   image: AssetImage(myList[i].image.toString()),fit: BoxFit.cover
+                                    // )
+                                  ),
+                                  width: MediaQuery.of(context).size.width,
+                                  child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(12),
+                                      child: Image.asset(
+                                        myList[i].image.toString(),
+                                        fit: BoxFit.cover,
+                                      )),
+                                ),
                               ),
+                            );
+                          }),
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Card(
+                      color: Colors.black54,
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Column(
+                          children: [
+                            const SizedBox(
+                              height: 10,
                             ),
-                          );
-                        }),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Card(
-                    color: Colors.black54,
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Column(
-                        children: [
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          CustomText(
-                            text: 'upcomming docs'.toUpperCase(),
-                            color: Colors.white,
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                        HomeCard(title: 'KINGCORGI'),
-                        HomeCard(title: 'SHIBCHAIN'),
-                        HomeCard(title: 'VERSATILE'),
-                        ],
+                            CustomText(
+                              text: 'upcomming docs'.toUpperCase(),
+                              color: Colors.white,
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            HomeCard(title: 'KINGCORGI'),
+                            HomeCard(title: 'SHIBCHAIN'),
+                            HomeCard(title: 'VERSATILE'),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: AppButtton(
-                            width: 0,
-                            height: 70,
-                            text: 'My Account',
-                            color: FrontEndConfigs.kPrimaryColor,
-                            onPress: () {},
-                            textColor: Colors.white),
-                      ),
-                      const SizedBox(width: 20,),
-                      Expanded(
-                        child: AppButtton(
-                            width: 0,
-                            height: 70,
-                            text: 'Setting',
-                            color: FrontEndConfigs.kPrimaryColor,
-                            onPress: () {},
-                            textColor: Colors.white),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 10,),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: AppButtton(
-                            width: 0,
-                            height: 70,
-                            text: 'News',
-                            color: FrontEndConfigs.kPrimaryColor,
-                            onPress: () {},
-                            textColor: Colors.white),
-                      ),
-                      const SizedBox(width: 20,),
-                      Expanded(
-                        child: AppButtton(
-                            width: 0,
-                            height: 70,
-                            text: 'Support',
-                            color: FrontEndConfigs.kPrimaryColor,
-                            onPress: () {},
-                            textColor: Colors.white),
-                      ),
-                    ],
-                  ),
-                ],
+                    Row(
+                      children: [
+                        Expanded(
+                          child: AppButtton(
+                              width: 0,
+                              height: 70,
+                              text: 'My Account',
+                              color: FrontEndConfigs.kPrimaryColor,
+                              onPress: () {},
+                              textColor: Colors.white),
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        Expanded(
+                          child: AppButtton(
+                              width: 0,
+                              height: 70,
+                              text: 'Setting',
+                              color: FrontEndConfigs.kPrimaryColor,
+                              onPress: () {},
+                              textColor: Colors.white),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: AppButtton(
+                              width: 0,
+                              height: 70,
+                              text: 'News',
+                              color: FrontEndConfigs.kPrimaryColor,
+                              onPress: () {},
+                              textColor: Colors.white),
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        Expanded(
+                          child: AppButtton(
+                              width: 0,
+                              height: 70,
+                              text: 'Support',
+                              color: FrontEndConfigs.kPrimaryColor,
+                              onPress: () {},
+                              textColor: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

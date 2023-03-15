@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'presentation/view/doctor_module/doctor_home.dart';
 import 'presentation/view/splash_screen/splash_view.dart';
 
 void main() {
@@ -15,6 +16,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const SplashView());
+        home: const DoctorHome());
   }
 }
